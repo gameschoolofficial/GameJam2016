@@ -7,26 +7,25 @@ public class spawnCuties : MonoBehaviour {
 	public Transform spawnPoint;
 
 	public float timer; 
+	public float spawnDelay = 1f;
 
 	// Use this for initialization
 	void Start () {
 	
-
+		timer = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		//set a randomized timer to spawn these cuties
+	}
+
+	public void createCutie(){
 	
-
-		if(Input.GetKeyUp(KeyCode.Space)){
-
-			Rigidbody cutieInstance ; 
-			cutieInstance = Instantiate (cutieObject,spawnPoint.position, spawnPoint.rotation) as Rigidbody;
-
-			cutieInstance.AddForce(spawnPoint.right * 500);
-		}
-
+		print ("creating cuties!");
+		Rigidbody cutieInstance ; 
+		cutieInstance = Instantiate (cutieObject,spawnPoint.position, spawnPoint.rotation) as Rigidbody;
+		
+		cutieInstance.AddForce(spawnPoint.right * 500);
 	}
 }
