@@ -34,7 +34,17 @@ public class Shot_Effects : MonoBehaviour {
 	{
 		//Instantiate explosion prefab. 
 		Instantiate(fireworksExplosion, parent.transform.position, Quaternion.identity);
+		print ("explodingFireworks parent = " + parent.GetType().ToString() );
 
+
+		//deactivate parent
+		if ( parent.GetType() == typeof(spawnTarget) ) {
+		
+			print ("Parent object spawnTarget");
+		} else if ( parent.GetType() == typeof(spawnCuties) ) {
+
+			print ("Parent Object is spawnCuties");
+		}
 
 		//turn off mesh of parent object. 
 		Renderer rend = parent.GetComponent<Renderer>();
