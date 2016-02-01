@@ -5,20 +5,39 @@ public class LaserSystem : MonoBehaviour {
 	public float chargeTime;
 	public float fireTime;
 	public GameObject laserCylinder;
+	public LineRenderer laserLine;
 
 	private enum LaserState {none, idle, firing}
 	private LaserState myState;
 
+	/*
+	public ParticleSystem endEffect;
+	public Transform endEffectTransform;
+	Transform myTransform;
+	public int maxLength;
+	int length;
+	Vector3[] position;*/
+
+
 	// Use this for initialization
 	void Start () 
 	{
+//		myTransform = transform; //is it? 
 
+		laserLine.SetVertexCount(2);
 		StartCoroutine(enterState(LaserState.idle));
+	}
+
+	void Update()
+	{
+		//UpdateLength();
 	}
 
 	private void turnOnLaser()
 	{
 		laserCylinder.SetActive(true);
+		laserLine.SetPosition(0, transform.position);
+		laserLine.SetPosition(1, Camera.main.transform.forward * 100);
 	}
 
 	private void turnOffLaser()
@@ -71,6 +90,43 @@ public class LaserSystem : MonoBehaviour {
 		StartCoroutine( enterState(newState));
 		yield return null;
 	}
+
+
+	/*
+	void UpdateLength(){
+		//Raycast from the location of the cube forwards
+		RaycastHit[] hit;
+		hit = Physics.RaycastAll(myTransform.position, myTransform.forward, maxLength);
+		int i = 0;
+		while(i < hit.Length){
+			print("hit");
+			//Check to make sure we aren't hitting triggers but colliders
+			if(!hit[i].collider.isTrigger)
+			{
+				length = (int)Mathf.Round(hit[i].distance)+2;
+				position = new Vector3[length];
+				//Move our End Effect particle system to the hit point and start playing it
+				if(endEffect){
+					endEffectTransform.position = hit[i].point;
+					if(!endEffect.isPlaying)
+						endEffect.Play();
+				}
+				laserLine.SetVertexCount(length);
+				return;
+			}
+			i++;
+		}
+		//If we're not hitting anything, don't play the particle effects
+//		if(endEffect){
+//			if(endEffect.isPlaying)
+//				endEffect.Stop();
+//		}
+		length = (int)maxLength;
+		position = new Vector3[length];
+		//laserLine.SetVertexCount(length);
+		
+		
+	}*/
 
 
 

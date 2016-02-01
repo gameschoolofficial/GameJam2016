@@ -26,7 +26,6 @@ public class spawnTarget : MonoBehaviour {
 		//instantiate a prefab target
 		targetInstance = Instantiate (targetBoardObjects,targetSpawnPoint.position, targetSpawnPoint.rotation) as GameObject;
 		//choose the type of points to give the prefab
-
 	}
 
 	public void targetOff(){
