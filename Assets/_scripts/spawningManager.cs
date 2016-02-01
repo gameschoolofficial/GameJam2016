@@ -75,6 +75,9 @@ public class spawningManager : MonoBehaviour {
 
 	public void activateLevel(int level){
 
+
+		//use transform.rotation y moves clockwise (+) or counter (-)
+
 		switch (level) {
 		case 1 :
 			//print ("Entering Level "+level);
