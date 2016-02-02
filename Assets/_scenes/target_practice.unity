@@ -132,7 +132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11427422, guid: dcaf4c2d748e94b16a4ff0c53372dbce, type: 2}
       propertyPath: chargeTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11427422, guid: dcaf4c2d748e94b16a4ff0c53372dbce, type: 2}
       propertyPath: fireTime

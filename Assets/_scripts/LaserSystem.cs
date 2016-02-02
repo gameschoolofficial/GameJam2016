@@ -69,6 +69,8 @@ public class LaserSystem : MonoBehaviour {
 
 	IEnumerator enterState(LaserState newState)
 	{
+		myState = newState;
+
 		switch (newState) {
 		case LaserState.idle:
 			//turnOff laser

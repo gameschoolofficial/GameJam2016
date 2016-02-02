@@ -33,10 +33,12 @@ public class Shot_Effects : MonoBehaviour {
 
 	void explodeFireworks()
 	{
-//		if( LaserSystem.mainLaser.myState == LaserSystem.LaserState.firing)
-//		{
-			//Instantiate explosion prefab. 
 
+		if( LaserSystem.mainLaser.myState == LaserSystem.LaserState.firing)
+		{
+			print(LaserSystem.mainLaser.myState);
+
+			//Instantiate explosion prefab. 
 			Instantiate(fireworksExplosion, parent.transform.position, Quaternion.identity);
 			print ("explodingFireworks parent = " + parent.GetType().ToString() );
 
@@ -54,7 +56,7 @@ public class Shot_Effects : MonoBehaviour {
 			Renderer rend = parent.GetComponent<Renderer>();
 			rend.enabled = false;
 			parent.SetActive(false);
-	//	}
+		}
 
 
 	}
