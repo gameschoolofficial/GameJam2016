@@ -95,7 +95,7 @@
      <Compile Include="Assets\_scripts\LaserBeam.cs" />
      <Compile Include="Assets\_scripts\LaserSystem.cs" />
      <Compile Include="Assets\_scripts\Shot_Effects.cs" />
-     <Compile Include="Assets\_scripts\cutieDestroy.cs" />
+     <Compile Include="Assets\_scripts\objectDestroy.cs" />
      <Compile Include="Assets\_scripts\printTest.cs" />
      <Compile Include="Assets\_scripts\spawnCuties.cs" />
      <Compile Include="Assets\_scripts\spawnTarget.cs" />
