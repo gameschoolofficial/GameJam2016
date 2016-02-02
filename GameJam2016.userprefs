@@ -1,11 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_scripts/Shot_Effects.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_scripts/LaserSystem.cs">
     <Files>
-      <File FileName="Assets/_scripts/spawnCuties.cs" Line="25" Column="27" />
-      <File FileName="Assets/_scripts/spawnTarget.cs" Line="16" Column="1" />
-      <File FileName="Assets/_scripts/spawningManager.cs" Line="84" Column="33" />
-      <File FileName="Assets/_scripts/Shot_Effects.cs" Line="40" Column="3" />
+      <File FileName="Assets/Laser Basic/Read Me/Read Me.txt" Line="1" Column="1" />
+      <File FileName="Assets/_scripts/LaserSystem.cs" Line="5" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -11,7 +11,7 @@
 	var Use2D = false;	
 	var LaserMask : LayerMask;
 	
-	var LaserOn = true;    
+	var LaserOn = false;    
     
 	var UseUVPan = true;
 	
@@ -261,4 +261,13 @@
   /////Icon
     function OnDrawGizmos () {
 		Gizmos.DrawIcon(transform.position, "LaserIcon.psd", true);
+	}
+	
+	function laserEnabled(b:boolean)
+	{
+		if(b)
+			{LaserOn = true;}
+		else
+			{LaserOn = false;}
+	
 	}
