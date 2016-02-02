@@ -8,10 +8,13 @@ public class LaserSystem : MonoBehaviour {
 	public LineRenderer laserLine;
 
 
-	private enum LaserState {none, idle, firing}
-	private LaserState myState;
+	public static LaserSystem mainLaser;
+
+	public enum LaserState {none, idle, firing}
+	public LaserState myState;
 	float laserAlpha = 1;
 	public float LaserDissapearSpeed;
+
 
 	/*
 	public ParticleSystem endEffect;
@@ -21,6 +24,11 @@ public class LaserSystem : MonoBehaviour {
 	int length;
 	Vector3[] position;*/
 
+	void Awake()
+	{
+		mainLaser = this;
+
+	}
 
 	// Use this for initialization
 	void Start () 
@@ -41,7 +49,7 @@ public class LaserSystem : MonoBehaviour {
 		Color c = Color.red; 
 		c.a = laserAlpha;
 		laserLine.material.color = c;
-		print(laserAlpha);
+
 	}
 
 	private void turnOnLaser()
@@ -65,12 +73,12 @@ public class LaserSystem : MonoBehaviour {
 		case LaserState.idle:
 			//turnOff laser
 			turnOffLaser();
-			print("laser off");
+
 			yield return new WaitForSeconds(chargeTime);
 			break;
 		case LaserState.firing:
 			turnOnLaser();
-			print("laser on");
+
 			yield return new WaitForSeconds(fireTime);
 			break;
 		case LaserState.none:
@@ -100,7 +108,7 @@ public class LaserSystem : MonoBehaviour {
 		default:
 			break;
 		}
-		print("cats " + newState);
+
 		StartCoroutine( enterState(newState));
 		yield return null;
 	}
