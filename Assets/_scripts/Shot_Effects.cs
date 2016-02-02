@@ -6,6 +6,10 @@ public class Shot_Effects : MonoBehaviour {
 	public GameObject fireworksExplosion;
 	public GameObject gibletExplosion;
 
+	private objectDestroy destroyInstance;
+	//private spawnTarget targetSpawnPoint;
+	//private spawnCuties cutieInstance;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -34,22 +38,19 @@ public class Shot_Effects : MonoBehaviour {
 	{
 		//Instantiate explosion prefab. 
 		Instantiate(fireworksExplosion, parent.transform.position, Quaternion.identity);
-		print ("explodingFireworks parent = " + parent.GetType().ToString() );
+		destroyInstance = parent.GetComponent<objectDestroy> () as objectDestroy;
 
-
-		//deactivate parent
-		if ( parent.GetType() == typeof(spawnTarget) ) {
-		
-			print ("Parent object spawnTarget");
-		} else if ( parent.GetType() == typeof(spawnCuties) ) {
-
-			print ("Parent Object is spawnCuties");
+		if ( destroyInstance != null ) {		
+			destroyInstance.destroyObject();
 		}
 
+
 		//turn off mesh of parent object. 
+		/*
 		Renderer rend = parent.GetComponent<Renderer>();
 		rend.enabled = false;
 		parent.SetActive(false);
+		*/
 
 	}
 }

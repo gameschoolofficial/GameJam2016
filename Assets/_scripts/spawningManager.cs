@@ -9,6 +9,13 @@ public class spawningManager : MonoBehaviour {
 	private bool levelComplete = false;
 	public float spawnDelay = 2f;
 
+	public int score = 0;
+
+	//get objects for the ranges of the targets
+	public Transform rangeOfSpawn1;
+	public Transform rangeOfSpawn2;
+
+	//get all targets used in game
 	public spawnTarget spawnTargetPoint;
 	public spawnTarget spawnTargetPoint1;
 	public spawnTarget spawnTargetPoint2;
@@ -19,6 +26,8 @@ public class spawningManager : MonoBehaviour {
 	public spawnTarget spawnTargetPoint7;
 	public spawnTarget spawnTargetPoint8;
 	public spawnTarget spawnTargetPoint9;
+
+
 
 //	//private spawnTarget[] allTargetPoints = new spawnTarget[]{
 //		spawnTargetPoint,
@@ -51,7 +60,7 @@ public class spawningManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		timer = 0;
 		activateLevel (1);
 	}
 
@@ -81,20 +90,40 @@ public class spawningManager : MonoBehaviour {
 		switch (level) {
 		case 1 :
 			//print ("Entering Level "+level);
-			//spawnTestPoint.targetOn();
-			spawnTargetPoint.targetOn();
-			spawnTargetPoint1.targetOn();
-			spawnTargetPoint2.targetOn();
+
+			//Add voice over: 
+			// Welcome to the laser simulator.  To calibrate the laser, please look at the targets as they appear. 
+			// 
+
+			spawnTargetPoint.targetOn(5f);
+			spawnTargetPoint1.targetOn(7f);
+			spawnTargetPoint2.targetOn(9f);
+
+			//spawnTargetPoint3.targetOn();
+			//spawnTargetPoint4.targetOn();
+			//spawnTargetPoint5.targetOn();
+
+			//VO: "Good, now that we've calibrated the laser, let's see how fast you can take these targets down"
 
 			//add delay()
-			spawnCutiePoint.createCutie();
-			spawnCutiePoint1.createCutie();
+			spawnCutiePoint.createCutie(5,10f);
 
+			//VO: "Oh how cute, a creature has just been released from our lab"
+
+			//VO: "Oh no! you've shot a creature, beware their family is coming for you!"
+
+
+			spawnCutiePoint1.createCutie(3,15f);
+
+			//check to see that all of the targets have been taken out. 
 
 			//activate 
 			break;
 		case 2 :
 			print ("Entering Level "+level);
+
+
+
 			break;
 
 		case 3 :

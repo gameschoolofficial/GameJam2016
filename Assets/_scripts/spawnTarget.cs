@@ -21,11 +21,19 @@ public class spawnTarget : MonoBehaviour {
 
 	}
 
-	public void targetOn(){
+	public void targetOn(float timeDelay){
+
+		print ("spawnTarget.targetOn w/ delay of " + timeDelay);
+		InvokeRepeating ("spawnInstance",timeDelay,0f);
+	}
+
+	void spawnInstance(){
 
 		//instantiate a prefab target
 		targetInstance = Instantiate (targetBoardObjects,targetSpawnPoint.position, targetSpawnPoint.rotation) as GameObject;
 		//choose the type of points to give the prefab
+
+		print ("spawning target");
 	}
 
 	public void targetOff(){
