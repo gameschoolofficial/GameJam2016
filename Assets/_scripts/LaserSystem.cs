@@ -4,11 +4,14 @@ using System.Collections;
 public class LaserSystem : MonoBehaviour {
 	public float chargeTime;
 	public float fireTime;
-	public GameObject laserCylinder;
+	public GameObject laserPointer;
 	public LineRenderer laserLine;
+
 
 	private enum LaserState {none, idle, firing}
 	private LaserState myState;
+	float laserAlpha = 1;
+	public float LaserDissapearSpeed;
 
 	/*
 	public ParticleSystem endEffect;
@@ -23,26 +26,37 @@ public class LaserSystem : MonoBehaviour {
 	void Start () 
 	{
 //		myTransform = transform; //is it? 
-
+		//laserAlpha = 1;
 		laserLine.SetVertexCount(2);
 		StartCoroutine(enterState(LaserState.idle));
 	}
 
+
+
 	void Update()
 	{
 		//UpdateLength();
+		if( laserAlpha > 0.1f)
+		{laserAlpha -= Time.deltaTime * LaserDissapearSpeed;}
+		Color c = Color.red; 
+		c.a = laserAlpha;
+		laserLine.material.color = c;
+		print(laserAlpha);
 	}
 
 	private void turnOnLaser()
 	{
-		laserCylinder.SetActive(true);
-		laserLine.SetPosition(0, transform.position);
+
+		laserLine.SendMessage("laserEnabled", true);
+		laserLine.SetPosition(0, laserPointer.transform.position);
 		laserLine.SetPosition(1, Camera.main.transform.forward * 100);
+
+		laserAlpha = 0.6f;
 	}
 
 	private void turnOffLaser()
 	{
-		laserCylinder.SetActive(false);
+		laserLine.SendMessage("laserEnabled", true);
 	}
 
 	IEnumerator enterState(LaserState newState)

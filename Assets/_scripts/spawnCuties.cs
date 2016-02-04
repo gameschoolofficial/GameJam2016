@@ -28,7 +28,7 @@ public class spawnCuties : MonoBehaviour {
 		//print ("creating cuties!");
 		//for (int i = 0; i<= numCuties; i++) {
 		totalCuties = numCuties;
-		print ("invoking " + numCuties + " with " + timeDelay + " delay");
+		//print ("invoking " + numCuties + " with " + timeDelay + " delay");
 		InvokeRepeating ("spawnInstance", timeDelay, 3f);
 			
 		//}
@@ -39,9 +39,9 @@ public class spawnCuties : MonoBehaviour {
 		cutieInstance = Instantiate (cutieObject, spawnPoint.position, spawnPoint.rotation) as Rigidbody;
 		cutieInstance.AddForce(spawnPoint.right * 100);
 		cutieCount++;
-		print("invoking cutieCount = "+ cutieCount);
+		//print("invoking cutieCount = "+ cutieCount);
 		if(cutieCount >= totalCuties){
-			print ("canceling Invoke & cutieCount = " +cutieCount);
+			//print ("canceling Invoke & cutieCount = " +cutieCount);
 			CancelInvoke();
 			cutieCount = 0;
 		}

@@ -8,6 +8,8 @@ public class spawningManager : MonoBehaviour {
 	private int levelReached = 1;
 	private bool levelComplete = false;
 	public float spawnDelay = 2f;
+	public AudioSource intro;
+	public AudioSource part2;
 
 	public int score = 0;
 
@@ -66,20 +68,9 @@ public class spawningManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
 
-		//designing level 1
-		//need to randomly spawn targets around the scene. 
-
-		/*
-		activateLevel (levelReached);
-
-
-		if (levelComplete) {
-			levelReached++;
-		}
-		*/
-
+		//activate different levels as you finish each level task
+		//levelreached;
 	}
 
 	public void activateLevel(int level){
@@ -92,42 +83,57 @@ public class spawningManager : MonoBehaviour {
 			//print ("Entering Level "+level);
 
 			//Add voice over: 
-			// Welcome to the laser simulator.  To calibrate the laser, please look at the targets as they appear. 
-			// 
+			// Hello there!  I'm Dr. Summers and I will be calibrating your new cybernetic eye implants.  
+			// Now let's see how the lasers in your eyes work!  Yes, i said LASERS!       
+			// I'll put some targets for you to shoot down, just simply look at them and once the target is locked on
+			// the laser will activate.  
 
-			spawnTargetPoint.targetOn(5f);
-			spawnTargetPoint1.targetOn(7f);
-			spawnTargetPoint2.targetOn(9f);
-
-			//spawnTargetPoint3.targetOn();
-			//spawnTargetPoint4.targetOn();
-			//spawnTargetPoint5.targetOn();
-
-			//VO: "Good, now that we've calibrated the laser, let's see how fast you can take these targets down"
-
-			//add delay()
-			spawnCutiePoint.createCutie(5,10f);
-
-			//VO: "Oh how cute, a creature has just been released from our lab"
-
-			//VO: "Oh no! you've shot a creature, beware their family is coming for you!"
+			intro.Play ();
+			spawnTargetPoint.targetOn(18f);
+			spawnTargetPoint1.targetOn(19f);
+			spawnTargetPoint2.targetOn(20f);
 
 
-			spawnCutiePoint1.createCutie(3,15f);
 
-			//check to see that all of the targets have been taken out. 
+
+
+			//when someone 
+
 
 			//activate 
 			break;
 		case 2 :
 			print ("Entering Level "+level);
 
+			//VO: 
+			//Great Job! now let's test your reflexes and see how fast you can shoot them down!
 
+			//part2.Play ();
+			spawnTargetPoint.targetOn(26f);
+			spawnTargetPoint1.targetOn(27f);
+			spawnTargetPoint2.targetOn(27f);
+			
+			spawnTargetPoint3.targetOn(28f);
+			spawnTargetPoint4.targetOn(28f);
+			spawnTargetPoint5.targetOn(28f);
 
 			break;
 
 		case 3 :
 			print ("Entering Level "+level);
+			//VO: "Incredible! Now that you know how they work, let's throw some more 
+			
+			//add delay()
+			spawnCutiePoint.createCutie(2,30f);
+			
+			//VO: "Oh how cute, a creature has just been released from our lab"
+			
+			//VO: "Oh no! you've shot a creature, beware their family is coming for you!"
+			
+			
+			spawnCutiePoint1.createCutie(3,15f);
+			
+			//check to see that all of the targets have been taken out. 
 			break;
 
 		default: 
