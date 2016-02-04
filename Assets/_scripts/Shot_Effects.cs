@@ -6,9 +6,13 @@ public class Shot_Effects : MonoBehaviour {
 	public GameObject fireworksExplosion;
 	public GameObject gibletExplosion;
 
+	private objectDestroy destroyInstance;
+	//private spawnTarget targetSpawnPoint;
+	//private spawnCuties cutieInstance;
+
 	// Use this for initialization
 	void Start () {
-	 
+	
 	}
 	
 	// Update is called once per frame
@@ -20,44 +24,33 @@ public class Shot_Effects : MonoBehaviour {
 	{
 		//instantiate giblets prefab. Prefab will send things outward and have particle effects
 
-		if( LaserSystem.mainLaser.myState == LaserSystem.LaserState.firing)
-		{
+
 		//turn off mesh of parent object. 
 		Renderer rend = parent.GetComponent<Renderer>();
 		rend.enabled = false;
 
-		}
+
 
 	}
 
 
 	void explodeFireworks()
 	{
+		//Instantiate explosion prefab. 
+		Instantiate(fireworksExplosion, parent.transform.position, Quaternion.identity);
+		destroyInstance = parent.GetComponent<objectDestroy> () as objectDestroy;
 
-		if( LaserSystem.mainLaser.myState == LaserSystem.LaserState.firing)
-		{
-			print(LaserSystem.mainLaser.myState);
-
-			//Instantiate explosion prefab. 
-			Instantiate(fireworksExplosion, parent.transform.position, Quaternion.identity);
-			print ("explodingFireworks parent = " + parent.GetType().ToString() );
-
-
-			//deactivate parent
-			if ( parent.GetType() == typeof(spawnTarget) ) {
-			
-				print ("Parent object spawnTarget");
-			} else if ( parent.GetType() == typeof(spawnCuties) ) {
-
-				print ("Parent Object is spawnCuties");
-			}
-
-			//turn off mesh of parent object. 
-			Renderer rend = parent.GetComponent<Renderer>();
-			rend.enabled = false;
-			parent.SetActive(false);
+		if ( destroyInstance != null ) {		
+			destroyInstance.destroyObject();
 		}
 
+
+		//turn off mesh of parent object. 
+		/*
+		Renderer rend = parent.GetComponent<Renderer>();
+		rend.enabled = false;
+		parent.SetActive(false);
+		*/
 
 	}
 }
