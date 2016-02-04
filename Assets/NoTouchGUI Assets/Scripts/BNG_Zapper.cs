@@ -47,6 +47,8 @@ public class BNG_Zapper : MonoBehaviour
     private bool usingSprites = true;
     #endregion
 
+	public Vector3 laserHitPoint;
+
     // Use this for initialization
 	void Start () {
 
@@ -82,8 +84,8 @@ public class BNG_Zapper : MonoBehaviour
 
         Debug.DrawRay(transform.position, fwd, Color.blue, rayLength); //draws a line in the editor's scene window so you can see where the raycast is pointing
 
-        if (Physics.Raycast(transform.position, fwd, out hit, rayLength)
-            && hit.transform.gameObject.GetComponent<BNG_ZapperAction>() != null) //if you have the tag, great, if not, check for BNG_Zapper Script
+        if (Physics.Raycast(transform.position, fwd, out hit, rayLength) 
+		    && hit.transform.gameObject.GetComponent<BNG_ZapperAction>() != null) //if you have the tag, great, if not, check for BNG_Zapper Script
         {
             onButton = true;
             currentGameObject = hit.transform.gameObject;
@@ -108,6 +110,7 @@ public class BNG_Zapper : MonoBehaviour
                 if (zappedObjects.Count > 0) zappedObjects.RemoveAt(0);
             }
         }
+	
     }
 
     void DoHit(RaycastHit hitInfo, GameObject hitObject, BNG_ZapperAction za)
