@@ -4,14 +4,19 @@ using System.Collections;
 public class spawningManager : MonoBehaviour {
 
 
-	private float timer = 0f;
+	//private float timer = 0f;
 	private int levelReached = 1;
 	private bool levelComplete = false;
+
+	private int targetHitCount = 0;
+	private int kittyHitCount = 0;
+
+
 	public float spawnDelay = 2f;
 	public AudioSource intro;
 	public AudioSource part2;
 
-	public int score = 0;
+	//public int score = 0;
 
 	//get objects for the ranges of the targets
 	public Transform rangeOfSpawn1;
@@ -62,7 +67,7 @@ public class spawningManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		timer = 0;
+		//timer = 0;
 		activateLevel (1);
 	}
 
@@ -71,12 +76,17 @@ public class spawningManager : MonoBehaviour {
 
 		//activate different levels as you finish each level task
 		//levelreached;
+
+		//activateLevel (levelReached);
+
+
 	}
 
 	public void activateLevel(int level){
 
 
 		//use transform.rotation y moves clockwise (+) or counter (-)
+
 
 		switch (level) {
 		case 1 :
@@ -88,17 +98,23 @@ public class spawningManager : MonoBehaviour {
 			// I'll put some targets for you to shoot down, just simply look at them and once the target is locked on
 			// the laser will activate.  
 
-			intro.Play ();
-			spawnTargetPoint.targetOn(18f);
-			spawnTargetPoint1.targetOn(19f);
-			spawnTargetPoint2.targetOn(20f);
+			//VO is 17seconds.
 
+			//intro.Play ();
+			spawnTargetPoint.targetOn(2f);//18f
+			spawnTargetPoint1.targetOn(3f);//19f
+			spawnTargetPoint2.targetOn(4f);//20f
 
+			//while(targetHitCount < 3){
+			
+				// do nothing
+				//print ("***"+targetHitCount);
 
+			//}
 
-
-			//when someone 
-
+			//levelReached++;
+			//levelComplete = true;
+			print ("Now run this");
 
 			//activate 
 			break;
@@ -120,7 +136,7 @@ public class spawningManager : MonoBehaviour {
 			break;
 
 		case 3 :
-			print ("Entering Level "+level);
+			//print ("Entering Level "+level);
 			//VO: "Incredible! Now that you know how they work, let's throw some more 
 			
 			//add delay()
@@ -141,6 +157,16 @@ public class spawningManager : MonoBehaviour {
 			break;
 		}
 
+	}
+
+	public void countTargetHit(){
+
+		targetHitCount++;
+	}
+
+	public void countKittyHit(){
+		
+		kittyHitCount++;
 	}
 
 
