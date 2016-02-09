@@ -3,7 +3,6 @@ using System.Collections;
 
 public class LaserSystem : MonoBehaviour {
 	public float chargeTime;
-	public float fireTime;
 	public GameObject laserPointer;
 	public LineRenderer laserLine;
 
@@ -14,6 +13,7 @@ public class LaserSystem : MonoBehaviour {
 	public LaserState myState;
 	float laserAlpha = 1;
 	public float LaserDissapearSpeed;
+	Vector3 currTarget;
 
 
 	/*
@@ -57,9 +57,9 @@ public class LaserSystem : MonoBehaviour {
 
 		laserLine.SendMessage("laserEnabled", true);
 		laserLine.SetPosition(0, laserPointer.transform.position);
-		laserLine.SetPosition(1, Camera.main.transform.forward * 100);
+		laserLine.SetPosition(1, currTarget);
 
-		laserAlpha = 0.6f;
+		laserAlpha = 0.6f; //do something with FireTime if you want to here. Probably not necessary. 
 	}
 
 	private void turnOffLaser()
@@ -67,28 +67,30 @@ public class LaserSystem : MonoBehaviour {
 		laserLine.SendMessage("laserEnabled", true);
 	}
 
-	IEnumerator enterState(LaserState newState)
+	IEnumerator enterState(LaserState nextState)
 	{
-		myState = newState;
 
-		switch (newState) {
+
+		switch (nextState) {
 		case LaserState.idle:
+			myState = LaserState.idle;
 			//turnOff laser
 			turnOffLaser();
-
-			yield return new WaitForSeconds(chargeTime);
+			yield return null;
 			break;
 		case LaserState.firing:
-			turnOnLaser();
-
-			yield return new WaitForSeconds(fireTime);
+			if( myState != LaserState.firing)
+			{turnOnLaser();}
+			myState = LaserState.firing;
+			yield return new WaitForSeconds(chargeTime);
+			StartCoroutine(leaveState(LaserState.firing)); 
 			break;
 		case LaserState.none:
 			break;
 		default:
 			break;
 		}
-		StartCoroutine( leaveState (newState));
+		//StartCoroutine( leaveState (nextState));
 	}
 
 	IEnumerator leaveState(LaserState oldState)
@@ -104,15 +106,21 @@ public class LaserSystem : MonoBehaviour {
 		case LaserState.firing:
 			//enterState(LaserState.idle);
 			newState = LaserState.idle;
+			StartCoroutine(enterState(LaserState.idle));
 			break;
 		case LaserState.none:
 			break;
 		default:
 			break;
 		}
-
-		StartCoroutine( enterState(newState));
 		yield return null;
+	}
+
+	public void fireAtTarget(Vector3 targetPos)
+	{
+		currTarget = targetPos;
+		StartCoroutine(enterState(LaserState.firing));
+
 	}
 
 

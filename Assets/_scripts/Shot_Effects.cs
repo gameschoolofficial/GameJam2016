@@ -36,6 +36,8 @@ public class Shot_Effects : MonoBehaviour {
 
 	void explodeFireworks()
 	{
+		reportLaserConnect(transform.position);
+
 		//Instantiate explosion prefab. 
 		Instantiate(fireworksExplosion, parent.transform.position, Quaternion.identity);
 		destroyInstance = parent.GetComponent<objectDestroy> () as objectDestroy;
@@ -51,6 +53,12 @@ public class Shot_Effects : MonoBehaviour {
 		rend.enabled = false;
 		parent.SetActive(false);
 		*/
+
+	}
+
+	void reportLaserConnect(Vector3 myPos)
+	{
+		LaserSystem.mainLaser.fireAtTarget(myPos);
 
 	}
 }
