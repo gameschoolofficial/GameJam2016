@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a96ccc03c0a24539b97f208e53c6471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreObj: {fileID: 106708, guid: 3bc8d42b993274e8c8efec8e4aac0f39, type: 2}
 --- !u!114 &11443052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,6 +184,10 @@ Prefab:
       propertyPath: waitTime
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scoreObj
+      value: 
+      objectReference: {fileID: 106708, guid: 3bc8d42b993274e8c8efec8e4aac0f39, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 130292}
